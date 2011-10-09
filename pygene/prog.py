@@ -9,7 +9,7 @@ Implements genetic programming organisms
 from random import random, randrange, choice
 from math import sqrt
 
-from organism import BaseOrganism
+from organism import Organism
 
 from xmlio import PGXmlMixin
 
@@ -337,7 +337,7 @@ class ProgOrganismMetaclass(type):
 
 #@-node:class ProgOrganismMetaclass
 #@+node:class ProgOrganism
-class ProgOrganism(BaseOrganism):
+class ProgOrganism(Organism):
     """
     Implements an organism for genetic programming
 
@@ -365,10 +365,11 @@ class ProgOrganism(BaseOrganism):
     
     #@-node:attribs
     #@+node:__init__
-    def __init__(self, root=None):
+    def __init__(self, root=None, **kw):
         """
         Creates this organism
         """
+        Organism.__init__(self, **kw)
         if root == None:
             root = self.genNode()
     
